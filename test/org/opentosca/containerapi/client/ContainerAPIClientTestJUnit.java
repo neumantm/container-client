@@ -165,6 +165,8 @@ public class ContainerAPIClientTestJUnit {
 	public void test1DeployApplication() {
 		try {
 			String pathToCsar = runConfiguration.directoryPath + File.separator + runConfiguration.testCsarName;
+			System.out.println(pathToCsar);
+			
 			Application deployedApplication = client.deployApplication(pathToCsar);
 			assertNotNull(deployedApplication);
 
