@@ -1,8 +1,8 @@
 {
-	"csarPath": "../testCSARs/scalingplans",
-	"containerHost": "localhost",
-	"containerHostInternal": "container",
-	"csarsTests": [
+	"csarPath" : "resources/csars",
+	"containerHost" : "localhost",
+	"containerHostInternal" : "container",
+	"csarsTests" : [
 		{
 			"csarName": "MyTinyToDo_Bare_Docker.csar",
 			"inputParams": [

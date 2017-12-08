@@ -208,8 +208,10 @@ public class OpenTOSCAContainerAPIClient extends OpenTOSCAContainerInternalAPICl
 	@Override
 	public Application deployApplication(final String filePath) throws Exception {
 		String url = this.getLegacyContainerAPIUrl() + "/CSARs";
+		System.out.println("Url to container: " + url);
 		File fileObj = new File(filePath);
 		if (fileObj != null && fileObj.exists() && fileObj.isFile()) {
+			System.out.println("File found");
 			WebResource webResource = createWebResource(url);
 			// the file to upload, represented as FileDataBodyPart
 			FileDataBodyPart fileDataBodyPart = new FileDataBodyPart("file", fileObj,
@@ -222,8 +224,10 @@ public class OpenTOSCAContainerAPIClient extends OpenTOSCAContainerInternalAPICl
 
 			Builder builder = webResource.type(MediaType.MULTIPART_FORM_DATA).accept(MediaType.APPLICATION_JSON);
 
+			System.out.println("Send post request");
 			ClientResponse response = builder.post(ClientResponse.class, multiPart);
 
+			System.out.println(response.toString());
 			if (response.getStatus() >= 400) {
 				throw new Exception("The request produced an error!");
 			}
