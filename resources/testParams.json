@@ -4,25 +4,13 @@
 	"containerHostInternal" : "container",
 	"csarsTests" : [
 		{
-			"csarName": "MyTinyToDo_Bare_Docker.csar",
+			"csarName": "Ubuntu_On_OpenStack.csar",
 			"inputParams": [
 				{
-					"DockerEngineURL": "tcp://dind:2375",
-					"DockerEngineCertificate": "",
-					"ApplicationPort": "9991"
-				}
-			],
-			"instanceRun": [
-				{
-					"interfaceName": "scaleout_dockercontainer",
-					"operationName": "scale-out",
-					"inputParams": [
-						{
-							"DockerEngineURL": "tcp://dind:2375",
-							"DockerEngineCertificate": "",
-							"ApplicationPort": "9992"
-						}
-					]
+					"VMPrivateKey": "$OpenStackTestVMPrivateKey",
+					"VMKeyPairName": "$OpenStackTestVMKeyPairName",
+					"OpenStackUser" : "$OpenStackTestAPIUserName",
+					"OpenStackUserPassword" : "$OpenStackTestAPIUserPw"
 				}
 			]
 		}
