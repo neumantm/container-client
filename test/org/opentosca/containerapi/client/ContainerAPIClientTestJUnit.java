@@ -254,7 +254,10 @@ public class ContainerAPIClientTestJUnit {
 
 	@Test
 	public void test8TestInstanceRuns() {
+		System.out.println("TestInstanceRuns");
+		System.out.println(runConfiguration.instanceRuns);
 		for (TestInstanceConfiguration instanceRun : runConfiguration.instanceRuns) {
+			System.out.println("Testing instance run: " + instanceRun);
 
 			Map<String, String> output = this.client.invokeServiceInstanceOperation(instance, instanceRun.interfaceName,
 					instanceRun.operationName, instanceRun.inputParams);
