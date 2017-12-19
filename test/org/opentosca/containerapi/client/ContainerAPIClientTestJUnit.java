@@ -108,10 +108,10 @@ public class ContainerAPIClientTestJUnit {
 				}
 
 			}
-			System.out.println("Running tests with following configurations:");
-			for (TestRunConfiguration runParam : params) {
-				System.out.println(runParam);
-			}
+//			System.out.println("Running tests with following configurations:");
+//			for (TestRunConfiguration runParam : params) {
+//				System.out.println(runParam);
+//			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
