@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.namespace.QName;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.opentosca.containerapi.client.IOpenTOSCAContainerAPIClient;
 import org.opentosca.containerapi.client.model.Application;
@@ -105,39 +106,40 @@ public class OpenTOSCAContainerAPIClient extends OpenTOSCAContainerInternalAPICl
 		boolean serviceInstanceIsAvailable = false;
 		String serviceInstanceUrl = "";
 		while (!serviceInstanceIsAvailable) {
-
-			// GET Request: check if plan instance was created
-
-			// Wait a little util plan instance and correlation Id are present
 			try {
-				Thread.sleep(7000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			System.out.println("Service Instance Resource Url: " + serviceInstancesResourceUrl);
-			JSONObject jsonObj = this.getJSONResource(serviceInstancesResourceUrl);
-			System.out.println(jsonObj.toString());
-			int currentCount = jsonObj.getJSONArray("References").length();
-			if (currentCount > 1) { // Self + service instance
-				JSONArray jsonRefs = jsonObj.getJSONArray("References");
-
-				for (int index = 0; index < jsonRefs.length(); index++) {
-					JSONObject jsonRef = jsonRefs.getJSONObject(index);
-
-					if (jsonRef.has("title") && !jsonRef.getString("title").equals("Self")) {
-						// @hahnml: Resolve the internal host in the URL to the external one
-						serviceInstanceUrl = resolveUrl(jsonRef.getString("href"), this.containerHost);
-						serviceInstanceIsAvailable = true;
-						System.out.println("Instance URL: " + serviceInstanceUrl);
-						break;
+				System.out.println("Service Instance Resource Url: " + serviceInstancesResourceUrl);
+				JSONObject jsonObj = this.getJSONResource(serviceInstancesResourceUrl);
+				System.out.println(jsonObj.toString());
+				int currentCount = jsonObj.getJSONArray("References").length();
+				if (currentCount > 1) { // Self + service instance
+					JSONArray jsonRefs = jsonObj.getJSONArray("References");
+	
+					for (int index = 0; index < jsonRefs.length(); index++) {
+						JSONObject jsonRef = jsonRefs.getJSONObject(index);
+	
+						if (jsonRef.has("title") && !jsonRef.getString("title").equals("Self")) {
+							// @hahnml: Resolve the internal host in the URL to the external one
+							serviceInstanceUrl = resolveUrl(jsonRef.getString("href"), this.containerHost);
+							serviceInstanceIsAvailable = true;
+							System.out.println("Instance URL: " + serviceInstanceUrl);
+							break;
+						}
 					}
 				}
-			}
 
-			try {
-				Thread.sleep(10000); // 10 seconds
-			} catch (InterruptedException e) {
+				try {
+					Thread.sleep(10000); // 10 seconds
+				} catch (InterruptedException e) {
+				}
+				
+			} catch (JSONException e){
+				// catch JSONException which is thrown if the plan instance is not available yet
+				System.out.println("Waiting for plan instance to be available");
+				
+				try {
+					Thread.sleep(10000); // 10 seconds
+				} catch (InterruptedException e2) {
+				}
 			}
 
 			// FIXME timeout to break the loop
