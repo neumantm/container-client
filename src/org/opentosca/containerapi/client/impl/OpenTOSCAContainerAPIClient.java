@@ -115,7 +115,7 @@ public class OpenTOSCAContainerAPIClient extends OpenTOSCAContainerInternalAPICl
 				e.printStackTrace();
 			}
 
-			System.out.println(serviceInstancesResourceUrl);
+			System.out.println("Service Instance Resource Url: " + serviceInstancesResourceUrl);
 			JSONObject jsonObj = this.getJSONResource(serviceInstancesResourceUrl);
 			System.out.println(jsonObj.toString());
 			int currentCount = jsonObj.getJSONArray("References").length();
