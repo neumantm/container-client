@@ -1,5 +1,5 @@
 {
-	"csarPath" : "~/opentosca-tests/csars",
+	"csarPath" : "resources/csars",
 	"containerHost" : "localhost",
 	"containerHostInternal" : "container",
 	"csarsTests" : [
