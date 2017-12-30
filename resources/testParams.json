@@ -1,5 +1,5 @@
 {
-	"csarPath" : "resources/csars",
+	"csarPath" : "~/opentosca-tests/csars",
 	"containerHost" : "localhost",
 	"containerHostInternal" : "container",
 	"csarsTests" : [
@@ -11,6 +11,17 @@
 					"VMKeyPairName": "$OpenStackTestVMKeyPairName",
 					"OpenStackUser" : "$OpenStackTestAPIUserName",
 					"OpenStackUserPassword" : "$OpenStackTestAPIUserPw"
+				}
+			]
+		},
+		{
+			"csarName": "Ubuntu_On_VSphere.csar",
+			"inputParams": [
+				{
+					"VMPrivateKey": "$VSphereTestVMPrivateKey",
+					"VMPublicKey": "$VSphereTestVMPublicKey",
+					"VSphereUserName" : "$VSphereTestAPIUserName",
+					"VSphereUserPassword" : "$VSphereTestAPIUserPw"
 				}
 			]
 		},
@@ -44,6 +55,53 @@
 					"VMKeyPairName": "$OpenStackTestVMKeyPairName",
 					"OpenStackUser" : "$OpenStackTestAPIUserName",
 					"OpenStackUserPassword" : "$OpenStackTestAPIUserPw"
+				}
+			]
+		},
+		{
+			"csarName": "Apache-Spark_On_VSphere.csar",
+			"inputParams": [
+				{
+					"VMPrivateKey": "$VSphereTestVMPrivateKey",
+					"VMPublicKey": "$VSphereTestVMPublicKey",
+					"VSphereUserName" : "$VSphereTestAPIUserName",
+					"VSphereUserPassword" : "$VSphereTestAPIUserPw"
+				}
+			]
+		},
+		{
+			"csarName": "Apache-Spark-App_On_VSphere.csar",
+			"inputParams": [
+				{
+					"VMPrivateKey": "$VSphereTestVMPrivateKey",
+					"VMPublicKey": "$VSphereTestVMPublicKey",
+					"VSphereUserName" : "$VSphereTestAPIUserName",
+					"VSphereUserPassword" : "$VSphereTestAPIUserPw"
+				}
+			]
+		},
+		{
+			"csarName": "MyTinyToDo_MySql_VSphere.csar",
+			"inputParams": [
+				{
+					"SqlVMPrivateKey": "$VSphereTestVMPrivateKey",
+					"SqlVMPublicKey": "$VSphereTestVMPublicKey",
+					"VSphereUserName" : "$VSphereTestAPIUserName",
+					"VSphereUserPassword" : "$VSphereTestAPIUserPw",
+					"DBUser" : "TestDBUser",
+					"DBPassword" : "TestDBPassword",
+					"DBMSPassword" : "TestDBMSPassword"
+				}
+			]
+		},
+		{
+			"csarName": "FlinkApp_ServiceTemplate.csar",
+			"inputParams": [
+				{
+					"VMPrivateKey": "$VSphereTestVMPrivateKey",
+					"VMPublicKey": "$VSphereTestVMPublicKey",
+					"VSphereUserName" : "$VSphereTestAPIUserName",
+					"VSphereUserPassword" : "$VSphereTestAPIUserPw"
 				}
 			]
 		},
@@ -85,5 +143,6 @@
 				}
 			]
 		}
+
 	]
 }
