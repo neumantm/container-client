@@ -4,7 +4,7 @@
 	"containerHostInternal" : "container",
 	"csarsTests" : [
 		{
-			"csarName": "Apache-Spark-App_On_VSphere.csar",
+			"csarName": "Apache-Spark_On_VSphere.csar",
 			"inputParams": [
 				{
 					"VMPrivateKey": "$VSphereTestVMPrivateKey",
